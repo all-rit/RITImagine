@@ -1,5 +1,5 @@
 include(srcdir("avartar_trait.jl"))
-
+using StatsBase
 
 get_one(lst) = rand(lst, 1)[1]
 
@@ -42,9 +42,11 @@ end
 
 function emulate_once()
    
-    avartar_list = [get_avartar() for _ in 1:1000]
-    showed_lst = rand(avartar_list, 16)
-    rand(showed_lst, 3)
+    # avartar_list = [get_avartar() for _ in 1:1000]
+    # showed_lst = rand(avartar_list, 16)
+
+    showed_lst = [get_avartar() for _ in 1:16]
+    sample(showed_lst, 3; replace = false)
 end
 
 function run_experiment(;nobs = 170)
